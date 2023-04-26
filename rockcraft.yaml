@@ -1,12 +1,22 @@
 name: mimir
 summary: Grafana Mimir in a ROCK.
-description: "Grafana Mimir is a horizontally scalable, \nhighly available, multi-tenant, long-term \nstorage for Prometheus.\n"
+description: |
+  Grafana Mimir is a horizontally scalable, highly available,
+  multi-tenant, long-term storage for Prometheus.
 version: "2.6.0"
 base: ubuntu:22.04
 license: Apache-2.0
-cmd: ["/bin/mimir"]
+
 platforms:
-  amd64:
+  amd64: {}
+  arm64: {}
+
+services:
+  mimir:
+    command: /usr/bin/mimir
+    override: replace
+    starrtup: enabled
+
 parts:
   mimir:
     plugin: go
