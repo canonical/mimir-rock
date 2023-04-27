@@ -14,7 +14,7 @@ services:
   mimir:
     command: /usr/bin/mimir
     override: replace
-    starrtup: enabled
+    startup: enabled
 
 parts:
   mimir:
