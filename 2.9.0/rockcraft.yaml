@@ -20,7 +20,6 @@ parts:
     source-type: git
     source-tag: "mimir-2.9.0"
     build-snaps:
-      - go
       - go/1.18/stable
     build-environment:
       - BUILD_IN_CONTAINER: "false"
