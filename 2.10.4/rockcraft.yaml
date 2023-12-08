@@ -3,8 +3,8 @@ summary: Grafana Mimir in a ROCK.
 description: |
   Grafana Mimir is a horizontally scalable, highly available,
   multi-tenant, long-term storage for Prometheus.
-version: "2.10.0"
-base: ubuntu:22.04
+version: "2.10.4"
+base: ubuntu@22.04
 license: Apache-2.0
 platforms:
   amd64: {}
@@ -18,7 +18,7 @@ parts:
     plugin: go
     source: https://github.com/grafana/mimir
     source-type: git
-    source-tag: "mimir-2.10.0"
+    source-tag: "mimir-2.10.4"
     build-snaps:
       - go/1.20/stable
     build-environment:
@@ -34,3 +34,16 @@ parts:
       opt/mimir/bin/mimir: usr/bin/mimir
       opt/mimir/bin/mimirtool: usr/bin/mimirtool
       opt/mimir/bin/query-tee: usr/bin/query-tee
+  ca-certs:
+    plugin: nil
+    stage-packages:
+      - ca-certificates
+  deb-security-manifest:
+    plugin: nil
+    after:
+      - mimir
+      - ca-certs
+    override-prime: |
+      set -x
+      mkdir -p $CRAFT_PRIME/usr/share/rocks/
+      (echo "# os-release" && cat /etc/os-release && echo "# dpkg-query" && dpkg-query --admindir=$CRAFT_PRIME/var/lib/dpkg/ -f '${db:Status-Abbrev},${binary:Package},${Version},${source:Package},${Source:Version}\n' -W) > $CRAFT_PRIME/usr/share/rocks/dpkg.query
