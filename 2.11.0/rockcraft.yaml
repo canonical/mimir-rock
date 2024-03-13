@@ -36,7 +36,7 @@ parts:
       opt/mimir/bin/query-tee: usr/bin/query-tee
   ca-certs:
     plugin: nil
-    stage-packages:
+    overlay-packages:
       - ca-certificates
   deb-security-manifest:
     plugin: nil
