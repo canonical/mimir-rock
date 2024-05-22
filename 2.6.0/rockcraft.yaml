@@ -1,5 +1,5 @@
 name: mimir
-summary: Grafana Mimir in a ROCK.
+summary: Grafana Mimir in a rock.
 description: |
   Grafana Mimir is a horizontally scalable, highly available,
   multi-tenant, long-term storage for Prometheus.
