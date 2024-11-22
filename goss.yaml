@@ -1,0 +1,10 @@
+process:
+  mimir:
+    running: true
+package:
+  ca-certificates:
+    installed: true
+http:
+  mimir-config:
+    status: 200
+    url: http://localhost:8080/config
