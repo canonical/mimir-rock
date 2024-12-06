@@ -1,7 +1,7 @@
 process:
   mimir:
     running: true
-packagee:
+package:
   ca-certificates:
     installed: true
 http:
