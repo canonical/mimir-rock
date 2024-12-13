@@ -9,11 +9,19 @@ This repository holds all the necessary files to build rocks for the upstream ve
 
 The rocks on this repository are built with [OCI Factory](https://github.com/canonical/oci-factory/), which also takes care of periodically rebuilding the images.
 
-New versions of the rock are tested using [`goss`](https://github.com/goss-org/goss) (for the actual validation) and [`noctua`](https://github.com/lucabello/noctua) (to run the actual command).
+**How do I interact with this repo?** This repo uses [`just`](https://github.com/casey/just) to easily run some commands:
+```
+∮ just
+Available recipes:
+    clean version               # `rockcraft clean` for a specific version
+    pack version                # Pack a rock of a specific version
+    run version=latest_version  # Run a rock and open a shell into it with `kgoss`
+    test version=latest_version # Test the rock with `kgoss`
+```
 
 Automation takes care of:
 * validating PRs, by simply trying to build the rock;
 * pulling upstream releases, creating a PR with the necessary files to be manually reviewed;
-* on PRs, validate the added (or modified) rocks by running them in a Kubernetes pod and testing them with `goss`;
+* on PRs, validate the added (or modified) rocks by running `kgoss`;
 * releasing to GHCR at [ghcr.io/canonical/mimir:dev](https://ghcr.io/canonical/mimir:dev), when merging to main, for development purposes.
 
