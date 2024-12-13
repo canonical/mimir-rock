@@ -4,7 +4,7 @@ description: |
   Grafana Mimir is a horizontally scalable, highly available,
   multi-tenant, long-term storage for Prometheus.
 version: "2.14.2"
-base: ubuntu@22.04
+base: ubuntu@24.04
 license: Apache-2.0
 platforms:
   amd64:
