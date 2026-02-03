@@ -12,7 +12,7 @@ default:
 [private]
 push-to-registry version:
   echo "Pushing $rock_name $version to local registry"
-  docker image import --base-name local/${rock_name} ${version}/${rock_name}_${version}_amd64.rock
+  docker image import ${version}/${rock_name}_${version}_amd64.rock local/${rock_name}
 
 # Pack a rock of a specific version
 pack version:
@@ -28,4 +28,4 @@ run version=latest_version: (push-to-registry version)
 
 # Test the rock with `dgoss`
 test version=latest_version: (push-to-registry version)
-  GOSS_OPTS="--retry-timeout 60s" dgoss run local/${rock_name}-dev:${version}
+  GOSS_OPTS="--retry-timeout 60s" dgoss run local/${rock_name}:${version}
