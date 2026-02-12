@@ -11,8 +11,8 @@ default:
 # Push an OCI image to a local registry
 [private]
 push-to-registry version:
-  echo "Pushing $rock_name $version to local registry"
-  docker image import ${version}/${rock_name}_${version}_amd64.rock local/${rock_name}
+  echo "Pushing $rock_name $version to docker daemon"
+  rockcraft.skopeo --insecure-policy copy oci-archive:${version}/${rock_name}_${version}_amd64.rock docker-daemon:local/${rock_name}:${version}
 
 # Pack a rock of a specific version
 pack version:
