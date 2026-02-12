@@ -24,7 +24,7 @@ clean version:
 
 # Run a rock and open a shell into it with `dgoss`
 run version=latest_version: (push-to-registry version)
-  kgoss edit local/${rock_name}:${version}
+  dgoss edit local/${rock_name}:${version}
 
 # Test the rock with `dgoss`
 test version=latest_version: (push-to-registry version)
