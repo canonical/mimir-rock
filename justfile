@@ -11,10 +11,8 @@ default:
 # Push an OCI image to a local registry
 [private]
 push-to-registry version:
-  echo "Pushing $rock_name $version to local registry"
-  rockcraft.skopeo --insecure-policy copy --dest-tls-verify=false \
-    "oci-archive:${version}/${rock_name}_${version}_amd64.rock" \
-    "docker://localhost:32000/${rock_name}-dev:${version}"
+  echo "Pushing $rock_name $version to docker daemon"
+  rockcraft.skopeo --insecure-policy copy oci-archive:${version}/${rock_name}_${version}_amd64.rock docker-daemon:local/${rock_name}:${version}
 
 # Pack a rock of a specific version
 pack version:
@@ -24,10 +22,10 @@ pack version:
 clean version:
   cd "$version" && rockcraft clean
 
-# Run a rock and open a shell into it with `kgoss`
+# Run a rock and open a shell into it with `dgoss`
 run version=latest_version: (push-to-registry version)
-  kgoss edit -i localhost:32000/${rock_name}-dev:${version}
+  dgoss edit local/${rock_name}:${version}
 
-# Test the rock with `kgoss`
+# Test the rock with `dgoss`
 test version=latest_version: (push-to-registry version)
-  GOSS_OPTS="--retry-timeout 60s" kgoss run -i localhost:32000/${rock_name}-dev:${version}
+  GOSS_OPTS="--retry-timeout 60s" dgoss run local/${rock_name}:${version}
