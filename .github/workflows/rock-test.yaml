@@ -20,6 +20,7 @@ jobs:
         run: |
           sudo snap install concierge --classic
           sudo snap install rockcraft --classic
+          sudo concierge prepare -p crafts
       - name: Run tests
         run: |
           cd 2.17.1
