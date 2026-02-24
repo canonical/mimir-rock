@@ -28,7 +28,7 @@ suites:
       sudo rockcraft.skopeo --insecure-policy copy "oci-archive:$CRAFT_ARTIFACT" docker-daemon:$PROJECT_NAME:latest
       
       # Run the rock
-      docker run -d --rm --name $PROJECT_NAME
+      docker run -d --rm --name $PROJECT_NAME -p 8080:8080
 
     restore: |
       PROJECT_NAME="mimir-rock"
