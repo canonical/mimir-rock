@@ -25,10 +25,10 @@ suites:
       sudo apt remove --yes retry
 
       # Load the rock into docker
-      sudo rockcraft.skopeo --insecure-policy copy "oci-archive:$CRAFT_ARTIFACT" docker-daemon:$PROJECT_NAME:latest
+      sudo rockcraft.skopeo --insecure-policy copy "oci-archive:$CRAFT_ARTIFACT" docker-daemon:${PROJECT_NAME}-dev:latest
       
       # Run the rock
-      docker run -d --rm --name $PROJECT_NAME -p 8080:8080
+      docker run -d --rm --name $PROJECT_NAME -p 8080:8080 ${PROJECT_NAME}-dev:latest
 
     restore: |
       PROJECT_NAME="mimir-rock"
