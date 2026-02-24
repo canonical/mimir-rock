@@ -1,6 +1,6 @@
 summary: test the 'mimir-rock' project
 
 execute: |
-  docker ps -a
+  docker ps -a 2&>1
   echo "$(docker ps)"
   curl localhost:8080/ready
