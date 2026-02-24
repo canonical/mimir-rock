@@ -1,4 +1,0 @@
-summary: test the 'mimir-rock' project
-
-execute: |
-  mimir --version
