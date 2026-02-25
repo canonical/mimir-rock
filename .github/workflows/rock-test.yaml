@@ -24,6 +24,6 @@ jobs:
       - name: Run tests
         run: |
           cd 2.17.1
-          rockcraft test
+          rockcraft test -v
 
 
