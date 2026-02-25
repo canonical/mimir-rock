@@ -1,8 +1,0 @@
-summary: test the 'mimir-rock' project
-
-execute: |
-  echo Hello
-  echo HelloStderr 1&>2
-  docker ps -a 1&>2
-  echo "$(docker ps)"
-  curl localhost:8080/ready

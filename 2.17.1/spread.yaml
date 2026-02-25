@@ -13,8 +13,9 @@ suites:
 
     prepare: |
       PROJECT_NAME="mimir-rock"
-      # Install docker
+      # Install dependencies
       sudo snap install docker
+      sudo apt install -y goss
 
       # For 'rockcraft.skopeo'
       sudo snap install --classic rockcraft

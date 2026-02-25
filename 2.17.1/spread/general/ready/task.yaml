@@ -1,0 +1,5 @@
+summary: test the 'mimir-rock' project
+
+execute: |
+  pwd
+  goss
