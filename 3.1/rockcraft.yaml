@@ -3,7 +3,7 @@ summary: Grafana Mimir in a rock.
 description: |
   Grafana Mimir is a horizontally scalable, highly available,
   multi-tenant, long-term storage for Prometheus.
-version: "3.1.1"
+version: "3.1.4"
 base: ubuntu@26.04
 license: Apache-2.0
 platforms:
@@ -18,7 +18,7 @@ parts:
     plugin: go
     source: https://github.com/grafana/mimir
     source-type: git
-    source-tag: "mimir-3.1.1"
+    source-tag: "mimir-3.1.4"
     build-snaps:
       - go/1.25/candidate
     build-environment:
